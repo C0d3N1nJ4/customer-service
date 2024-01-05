@@ -64,7 +64,7 @@ public class CustomerController {
             @ApiResponse(description = "Successful Operation", responseCode = "202", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class)))
     })
     public Customer saveCustomer(@RequestBody Customer customer) {
-        return customerService.save(customer);
+        return customerService.createCustomer(customer);
     }
 
     @GetMapping("/address/{address-id}")

@@ -1,6 +1,5 @@
 package com.application.customer;
 
-import com.application.customer.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public interface CustomerService {
 
     List<Customer> getCustomerByStatus(String status);
 
-    Customer save(Customer customer);
+    Customer createCustomer(Customer customer);
 
     Optional<Customer> findCustomerByAddress_Id(String addressId);
 

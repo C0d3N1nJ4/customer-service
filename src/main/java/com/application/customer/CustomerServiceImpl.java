@@ -2,9 +2,6 @@ package com.application.customer;
 
 import com.application.address.Address;
 import com.application.address.AddressService;
-import com.application.customer.Customer;
-import com.application.customer.CustomerRepository;
-import com.application.customer.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer save(Customer customer) {
+    public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
@@ -60,8 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (customerRepository.existsById(customer.getId())) {
             throw new RuntimeException("Customer already exists");
         } else {
-            if (address != null) {
-                //customer.setAddressId(addressId);
+            if (address.isPresent()) {
                 return customerRepository.save(customer);
             } else {
                 throw new RuntimeException("Address not found");
