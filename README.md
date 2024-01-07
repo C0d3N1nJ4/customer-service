@@ -21,4 +21,8 @@ The swagger documentation for the api endpoints is available at the following UR
 
 The domain model is composed of three entities : Customer, Address and Contact. A Customer can have one address and one contact.
 
+# Sequence diagram
+
+![img.png](docs/img.png)
+
 
