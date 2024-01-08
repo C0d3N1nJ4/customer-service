@@ -23,6 +23,6 @@ The domain model is composed of three entities : Customer, Address and Contact. 
 
 # Sequence diagram
 
-![img.png](docs/img.png)
+![customer.png](docs/customer.png)
 
 
