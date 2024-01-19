@@ -2,6 +2,8 @@ package com.application.customer;
 
 import com.application.address.Address;
 import com.application.address.AddressService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.kafka.core.KafkaOperations;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +47,24 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer createCustomer(Customer customer) {
+        var result = kafkaOperations.send("customer", convertToJson(customer));
+        result.whenComplete((sendResult, ex) -> {
+            if (ex == null) {
+                System.out.println("Result (success): " + sendResult.getRecordMetadata());
+            } else {
+                ex.printStackTrace();
+            }
+        });
+
         return customerRepository.save(customer);
+    }
+
+    private String convertToJson(Customer customer) {
+        try {
+            return new ObjectMapper().writeValueAsString(customer);
+        } catch (JsonProcessingException ex) {
+            throw new IllegalArgumentException(ex);
+        }
     }
 
     @Override
