@@ -17,7 +17,6 @@ public class Customer {
     private String status;
 
     @OneToOne
-
     private Address address;
 
     @OneToOne
