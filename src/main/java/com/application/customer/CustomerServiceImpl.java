@@ -2,6 +2,7 @@ package com.application.customer;
 
 import com.application.address.Address;
 import com.application.address.AddressService;
+import org.springframework.kafka.core.KafkaOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +15,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final AddressService addressService;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService) {
+    private final KafkaOperations<String, String> kafkaOperations;
+
+    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService, KafkaOperations<String, String> kafkaOperations) {
         this.customerRepository = customerRepository;
         this.addressService = addressService;
+        this.kafkaOperations = kafkaOperations;
     }
 
     @Override
