@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final KafkaOperations<String, String> kafkaOperations;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, AddressService addressService, KafkaOperations<String, String> kafkaOperations) {
+    public CustomerServiceImpl(KafkaOperations<String, String> kafkaOperations, CustomerRepository customerRepository, AddressService addressService) {
         this.customerRepository = customerRepository;
         this.addressService = addressService;
         this.kafkaOperations = kafkaOperations;
@@ -55,7 +55,6 @@ public class CustomerServiceImpl implements CustomerService {
                 ex.printStackTrace();
             }
         });
-
         return customerRepository.save(customer);
     }
 

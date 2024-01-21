@@ -1,4 +1,4 @@
-package com.application.config;
+package com.application.kafka.producer;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.IntegerSerializer;
@@ -9,6 +9,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,8 +32,8 @@ public class KafkaConfiguration {
     public Map<String, Object> producerFactoryProperties() {
         var properties = Map.<String, Object>of(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
-                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class,
-                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return properties;
     }
 
