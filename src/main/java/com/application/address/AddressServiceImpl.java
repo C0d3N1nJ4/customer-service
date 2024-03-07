@@ -6,16 +6,14 @@ import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
+    private final AddressRepository addressRepository;
 
-        private final AddressRepository addressRepository;
-
-        public AddressServiceImpl(AddressRepository addressRepository) {
-            this.addressRepository = addressRepository;
-        }
-
+    public AddressServiceImpl(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
 
     public Optional<Address> findById(String id) {
-       return addressRepository.findById(id);
+        return addressRepository.findById(id);
     }
 
     @Override
@@ -23,7 +21,7 @@ public class AddressServiceImpl implements AddressService {
         return addressRepository.save(address);
     }
 
-    public Iterable<Address> getAddressByCity(String city) {
+    public Iterable<Address> findByCity(String city) {
         return addressRepository.findAddressByCity(city);
     }
 
