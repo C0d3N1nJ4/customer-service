@@ -53,7 +53,7 @@ public class CustomerController {
         } else if (status.equals("ACTIVE") || status.equals("INACTIVE")) {
             return customerService.getCustomerByStatus(status);
         } else {
-            throw new StatusNotFoundException(status);
+            throw new CustomerNotFoundException(status);
         }
     }
 
