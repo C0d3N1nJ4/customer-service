@@ -1,7 +1,6 @@
 package com.application.address;
 
 import com.application.exceptions.AddressNotFoundException;
-import com.application.exceptions.CustomerNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,7 +24,6 @@ public class AddressController {
     }
 
     @GetMapping("/{address-id}")
-    @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Retrieve an address by it's id", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class)))
@@ -39,7 +37,6 @@ public class AddressController {
     }
 
     @PostMapping
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create an address", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "201", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class)))
@@ -56,7 +53,7 @@ public class AddressController {
         if (city == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
         } else {
-            return addressService.getAddressByCity(city);
+            return addressService.findByCity(city);
         }
     }
 }
