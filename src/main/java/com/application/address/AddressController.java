@@ -16,11 +16,8 @@ public class AddressController {
 
     private final AddressServiceImpl addressService;
 
-    private final AddressRepository addressRepo;
-
-    public AddressController(AddressServiceImpl addressService, AddressRepository addressRepo) {
+    public AddressController(AddressServiceImpl addressService) {
         this.addressService = addressService;
-        this.addressRepo = addressRepo;
     }
 
     @GetMapping("/{address-id}")

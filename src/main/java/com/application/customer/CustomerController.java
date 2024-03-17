@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -53,7 +54,7 @@ public class CustomerController {
         } else if (status.equals("ACTIVE") || status.equals("INACTIVE")) {
             return customerService.getCustomerByStatus(status);
         } else {
-            throw new CustomerNotFoundException(status);
+            throw new StatusNotFoundException(status);
         }
     }
 
@@ -85,5 +86,4 @@ public class CustomerController {
     public Customer saveCustomerWithAddress(@RequestBody Customer customer, @PathVariable("address-id") String addressId) {
         return customerService.saveCustomerWithAddress(customer, addressId);
     }
-
 }
