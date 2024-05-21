@@ -1,4 +1,5 @@
 package com.application.customer;
+
 import com.application.exceptions.CustomerNotFoundException;
 import com.application.exceptions.StatusNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,9 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -38,8 +37,9 @@ public class CustomerController {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class)))
     })
     public Optional<Customer> getCustomerById(@PathVariable String id) {
-        if (customerService.existsById(id)) {
-            return customerService.findById(id);
+        Optional<Customer> customer = customerService.findById(id);
+        if (customer.isPresent()) {
+            return customer;
         } else {
             throw new CustomerNotFoundException(id);
         }
