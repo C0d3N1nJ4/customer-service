@@ -23,7 +23,6 @@ public class CustomerController {
     }
 
     @GetMapping
-    @ResponseBody
     @Operation(summary = "Retrieve all customers", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class)))
     })
