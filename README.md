@@ -5,8 +5,11 @@ This Spring demo project uses the following libraries and frameworks :
 3. H2 in-memory database
 4. Actuator
 5. Swagger
+6. Thymeleaf
 
 This project aims to implement a simple Spring project that exposes an API with various operations to interact with Customer information stored in H2.
+
+A user-interface is also available to interact with the API and is available at http://localhost:8080/view/customers
 
 # Actuator 
 The following endpoints are available for application monitoring :
