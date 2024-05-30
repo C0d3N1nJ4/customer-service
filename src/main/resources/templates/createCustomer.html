@@ -26,6 +26,15 @@
             cursor: pointer;
             width: 100%;
         }
+        input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
         input[type="submit"]:hover {
             opacity: 0.8;
         }
@@ -35,11 +44,18 @@
 <h1>New Customer</h1>
 <form action="#" th:action="@{/view/customers/new}" th:object="${customer}" method="post">
     <p th:if="${error}" th:text="${error}" style="color: red;"></p>
-    <p>ID: <input type="text" th:field="*{id}"/></p>
-    <p>Name: <input type="text" th:field="*{name}"/></p>
-    <p>Last Name: <input type="text" th:field="*{lastname}"/></p>
+    <p>ID:
+        <input type="text" th:field="*{id}" required placeholder="Enter ID"/>
+    </p>
+    <p>Name:
+        <input type="text" th:field="*{name}" required placeholder="Enter Name"/>
+    </p>
+    <p>Last Name:
+        <input type="text" th:field="*{lastname}" required placeholder="Enter Last Name"/>
+    </p>
     <p>Status:
-        <select th:field="*{status}">
+        <select th:field="*{status}" required>
+            <option value="">Select a status</option>
             <option value="ACTIVE">ACTIVE</option>
             <option value="INACTIVE">INACTIVE</option>
         </select>
