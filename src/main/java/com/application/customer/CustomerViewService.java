@@ -1,7 +1,9 @@
 package com.application.customer;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -39,5 +41,24 @@ public class CustomerViewService {
             customerService.createCustomer(customer);
             return "redirect:/view/customers";
         }
+    }
+
+    @GetMapping("/view/customers/edit/{id}")
+    public String editCustomer(@PathVariable("id") String id, Model model) {
+        Customer customer = customerService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid customer Id:" + id));
+        model.addAttribute("customer", customer);
+
+        return "edit";
+    }
+
+    @PostMapping("/customers/update")
+    public String updateCustomer(@Valid Customer customer, BindingResult result, Model model){
+        if (result.hasErrors()) {
+            return "edit";
+        }
+
+        customerService.createCustomer(customer);
+        return "redirect:/view/customers";
     }
 }
