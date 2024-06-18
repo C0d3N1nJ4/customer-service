@@ -1,7 +1,9 @@
-package com.application.customer;
+package com.application.customer.services;
 
 import com.application.address.Address;
 import com.application.address.AddressService;
+import com.application.customer.Customer;
+import com.application.customer.CustomerRepository;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Iterable<Customer> findAll() {
+    public List<Customer> findAll() {
         log.info("Finding all customers");
         return customerRepository.findAll();
     }
@@ -47,6 +49,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer createCustomer(Customer customer) {
+        if (customerRepository.existsById(customer.getId())) {
+            throw new RuntimeException("Customer already exists");
+        }
         log.info("Creating customer : " + customer);
         return customerRepository.save(customer);
     }

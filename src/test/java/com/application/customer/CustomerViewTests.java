@@ -3,6 +3,8 @@ package com.application.customer;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.application.customer.services.CustomerServiceImpl;
+import com.application.customer.services.CustomerViewService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class CustomerViewTests {
@@ -33,7 +36,7 @@ public class CustomerViewTests {
     @Test
     public void testGetAllCustomers() {
         // Arrange
-        Iterable<Customer> customers = Collections.singletonList(new Customer());
+        List<Customer> customers = Collections.singletonList(new Customer());
         when(customerService.findAll()).thenReturn(customers);
 
         // Act
