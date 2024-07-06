@@ -29,6 +29,10 @@ docker run -p 8080:8080 customer-service
 
 ```
 
+# Test data
+
+The application is preloaded with test data initialized in the data.sql file. The data is loaded when the application starts.
+
 # Domain model
 
 The domain model is composed of three entities : Customer, Address and Contact. A Customer can have one address and one contact.
