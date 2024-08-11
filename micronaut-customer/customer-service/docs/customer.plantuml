@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #EEEBDC
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF}
+
+autonumber 1 1 "<b>[00]"
+group Customer Service
+    group GET /customers
+        api -> customerService: GET /customers
+        database    customerDb    as customerDb
+        customerService -> customerDb: findCustomers()
+        api <-[#green]- customerService: 200 OK
+    end
+    group GET /customers/{id}
+        api -> customerService: GET /customers/{id}
+        customerService -> customerDb: findCustomerById()
+        api <-[#green]- customerService: 200 OK
+        api <-[#red]- customerService: 404 Not Found
+    end
+    group GET /customers/status/{status}
+        api -> customerService: GET /customers/status/{status}
+        customerService -> customerDb: findCustomersByStatus()
+        api <-[#green]- customerService: 200 OK
+    end
+    group POST /customers
+        api -> customerService: POST /customers
+        customerService -> customerDb: saveCustomer()
+        api <-[#green]- customerService: 201 Created
+    end
+    group PUT /customers/{id}
+        api -> customerService: PUT /customers/{id}
+        customerService -> customerDb: updateCustomer()
+        api <-[#green]- customerService: 200 OK
+        api <-[#red]- customerService: 404 Not Found
+    end
+    group POST /address
+        api -> customerService: POST /address
+        customerService -> customerDb: saveAddress()
+        api <-[#green]- customerService: 201 Created
+    end
+    group PUT /address/{id}
+        api -> customerService: PUT /address/{id}
+        customerService -> customerDb: updateAddress()
+        api <-[#green]- customerService: 200 OK
+        api <-[#red]- customerService: 404 Not Found
+    end
+    group GET /address/filter/city/{city}
+        api -> customerService: GET /address/filter/city/{city}
+        customerService -> customerDb: findAddressByCity()
+        api <-[#green]- customerService: 200 OK
+        api <-[#red]- customerService: 404 Not Found
+    end
+    group POST /contact
+        api -> customerService: POST /contact
+        customerService -> customerDb: saveContact()
+        api <-[#green]- customerService: 201 Created
+    end
+    group GET /contact
+        api -> customerService: GET /contact
+        customerService -> customerDb: findAll()
+        api <-[#green]- customerService: 200 OK
+    end
+    group PUT /contact/{id}
+        api -> customerService: PUT /contact/{id}
+        customerService -> customerDb: updateContact()
+        api <-[#green]- customerService: 200 OK
+        api <-[#red]- customerService: 404 Not Found
+    end
+end
+@enduml
