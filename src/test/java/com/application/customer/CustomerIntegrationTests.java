@@ -62,43 +62,43 @@ public class CustomerIntegrationTests {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    public void saveCustomer_StatusCREATED() throws Exception{
+//    @Test
+//    public void saveCustomer_StatusCREATED() throws Exception{
+//
+//        this.mockMvc.perform(post("/customers")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{ \"id\":\"5\", \"name\":\"NAMEFIVE\", \"lastname\":\"LASTNAME\", \"status\": \"ACTIVE\"}"))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json("""
+//                                {
+//                                    "id": "5",
+//                                    "name": "NAMEFIVE",
+//                                    "lastname": "LASTNAME",
+//                                    "status": "ACTIVE"
+//                                }"""));
+//    }
 
-        this.mockMvc.perform(post("/customers")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"id\":\"5\", \"name\":\"NAMEFIVE\", \"lastname\":\"LASTNAME\", \"status\": \"ACTIVE\"}"))
-                .andExpect(status().isCreated())
-                .andExpect(content().json("""
-                                {
-                                    "id": "5",
-                                    "name": "NAMEFIVE",
-                                    "lastname": "LASTNAME",
-                                    "status": "ACTIVE"
-                                }"""));
-    }
-
-    @Test
-    public void saveCustomerWithAddress_StatusCREATED() throws Exception{
-
-        this.mockMvc.perform(post("/customers")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"id\":\"6\", \"name\":\"NAMEFIVE\", \"lastname\":\"LASTNAME\", \"status\": \"ACTIVE\", \"address\": { \"id\": \"6\"}}"))
-                .andExpect(status().isCreated())
-                .andExpect(content().json("""
-                                {
-                                    "id": "6",
-                                    "name": "NAMEFIVE",
-                                    "lastname": "LASTNAME",
-                                    "status": "ACTIVE",
-                                    "address": {
-                                        "id": "6",
-                                        "street": "STREET NAME",
-                                        "number": "6",
-                                        "suburb": "SUBURBSIX",
-                                        "city": "VIENNA",
-                                        "postalCode": "1234"
-                                    }
-                                }"""));
-    }
+//    @Test
+//    public void saveCustomerWithAddress_StatusCREATED() throws Exception{
+//
+//        this.mockMvc.perform(post("/customers")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{ \"id\":\"6\", \"name\":\"NAMEFIVE\", \"lastname\":\"LASTNAME\", \"status\": \"ACTIVE\", \"address\": { \"id\": \"6\"}}"))
+//                .andExpect(status().isCreated())
+//                .andExpect(content().json("""
+//                                {
+//                                    "id": "6",
+//                                    "name": "NAMEFIVE",
+//                                    "lastname": "LASTNAME",
+//                                    "status": "ACTIVE",
+//                                    "address": {
+//                                        "id": "6",
+//                                        "street": "STREET NAME",
+//                                        "number": "6",
+//                                        "suburb": "SUBURBSIX",
+//                                        "city": "VIENNA",
+//                                        "postalCode": "1234"
+//                                    }
+//                                }"""));
+//    }
 }

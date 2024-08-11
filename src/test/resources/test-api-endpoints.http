@@ -1,0 +1,7 @@
+### API Tests
+
+###Retrieve all customers
+GET http://localhost:8080/customers
+
+###
+GET http://localhost:8080/contact

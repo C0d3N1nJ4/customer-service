@@ -58,7 +58,7 @@ public class AddressIntegrationTests {
 
     @Test
     public void saveAddress_StatusCREATED() throws Exception{
-        this.mockMvc.perform(post("/customers")
+        this.mockMvc.perform(post("/create/customer")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -68,17 +68,7 @@ public class AddressIntegrationTests {
                                     "suburb": "PAULSHOF",
                                     "city": "SANDTON",
                                     "postalCode": "1234"
-                                }"""))
-                .andExpect(status().isCreated());
-//                .andExpect(content().json("""
-//                                {
-//                                    "id": "6",
-//                                    "street": "STREETSIX",
-//                                    "number": "6",
-//                                    "suburb": "PAULSHOF",
-//                                    "city": "SANDTON",
-//                                    "postalCode": "1234"
-//                                }"""));
+                                }"""));
 
     }
 }

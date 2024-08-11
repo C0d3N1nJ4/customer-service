@@ -1,6 +1,5 @@
 package com.application.contact;
 
-import com.application.address.Address;
 import com.application.exceptions.ContactNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -8,7 +7,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -42,8 +40,9 @@ public class ContactController {
                             schema = @Schema(implementation = Contact.class)))
     })
     public Contact getContactById(@PathVariable String id) {
-        if (contactService.existsById(id)) {
-            return contactService.findById(id);
+        Contact contact = contactService.findById(id);
+        if (contact != null) {
+            return contact;
         } else {
             throw new ContactNotFoundException(id);
         }
