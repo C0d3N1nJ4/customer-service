@@ -33,6 +33,14 @@ public class AddressController {
         }
     }
 
+    @GetMapping("/list")
+    @Operation(summary = "Retrieve all addresses", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class)))
+    })
+    public Iterable<Address> getAllAddresses() {
+        return addressService.findAll();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create an address", responses = {

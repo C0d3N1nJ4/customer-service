@@ -2,6 +2,7 @@ package com.application.address;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -10,6 +11,10 @@ public class AddressServiceImpl implements AddressService {
 
     public AddressServiceImpl(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
+    }
+
+    public List<Address> findAll() {
+        return addressRepository.findAll();
     }
 
     public Optional<Address> findById(String id) {

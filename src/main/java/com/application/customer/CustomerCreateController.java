@@ -28,7 +28,7 @@ public class CustomerCreateController {
         return customerService.createCustomer(customer);
     }
 
-    @PostMapping("address/{address-id}")
+    @PostMapping("/address/{address-id}")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new customer record with address", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "201", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class)))

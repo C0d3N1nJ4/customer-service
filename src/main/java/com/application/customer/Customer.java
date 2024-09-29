@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "customer")
+@Table(name = "CUSTOMER")
 public class Customer {
 
     @Id
@@ -21,7 +21,6 @@ public class Customer {
     private String status;
 
     @OneToOne
-
     private Address address;
 
     @OneToOne
