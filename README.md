@@ -20,13 +20,19 @@ http://localhost:8080/actuator
 
 The swagger documentation for the api endpoints is available at the following URL : http://localhost:8080/swagger-ui.html
 
-# Running the application
+# Running the application locally
+
+```shell
+mvn clean install
+mvn spring-boot:run
+```
+
+# Running the application in Docker
 The Dockerfile is available in the root directory of the project. To build the Docker image, run the following command :
 
 ```shell
 docker build -t customer-service .
 docker run -p 8080:8080 customer-service
-
 ```
 
 # Test data
