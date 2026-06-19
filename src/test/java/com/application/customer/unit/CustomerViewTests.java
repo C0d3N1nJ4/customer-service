@@ -1,10 +1,11 @@
-package com.application.customer;
+package com.application.customer.unit;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.application.customer.services.CustomerServiceImpl;
-import com.application.customer.services.CustomerViewService;
+import com.application.customer.model.Customer;
+import com.application.customer.service.CustomerService;
+import com.application.customer.web.CustomerViewController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,10 +21,10 @@ import java.util.Optional;
 public class CustomerViewTests {
 
     @Mock
-    private CustomerServiceImpl customerService;
+    private CustomerService customerService;
 
     @InjectMocks
-    private CustomerViewService customerViewService;
+    private CustomerViewController customerViewController;
 
     private Model model;
 
@@ -40,7 +41,7 @@ public class CustomerViewTests {
         when(customerService.findAll()).thenReturn(customers);
 
         // Act
-        String viewName = customerViewService.getAllCustomers(model);
+        String viewName = customerViewController.getAllCustomers(model);
 
         // Assert
         assertEquals("customers", viewName);
@@ -51,7 +52,7 @@ public class CustomerViewTests {
     @Test
     public void testNewCustomer() {
         // Act
-        String viewName = customerViewService.newCustomer(model);
+        String viewName = customerViewController.newCustomer(model);
 
         // Assert
         assertEquals("createCustomer", viewName);
@@ -67,7 +68,7 @@ public class CustomerViewTests {
         when(customerService.findById("1")).thenReturn(Optional.of(customer));
 
         // Act
-        String viewName = customerViewService.createCustomer(customer, model);
+        String viewName = customerViewController.createCustomer(customer, model);
 
         // Assert
         assertEquals("createCustomer", viewName);
@@ -83,7 +84,7 @@ public class CustomerViewTests {
         when(customerService.findById("2")).thenReturn(Optional.empty());
 
         // Act
-        String viewName = customerViewService.createCustomer(customer, model);
+        String viewName = customerViewController.createCustomer(customer, model);
 
         // Assert
         assertEquals("redirect:/view/customers", viewName);

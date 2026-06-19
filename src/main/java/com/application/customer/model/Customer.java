@@ -1,7 +1,7 @@
-package com.application.customer;
+package com.application.customer.model;
 
-import com.application.address.Address;
-import com.application.contact.Contact;
+import com.application.address.model.Address;
+import com.application.contact.model.Contact;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

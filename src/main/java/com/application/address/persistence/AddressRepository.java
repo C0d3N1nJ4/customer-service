@@ -1,4 +1,6 @@
-package com.application.address;
+package com.application.address.persistence;
+
+import com.application.address.model.Address;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

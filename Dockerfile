@@ -1,13 +1,9 @@
-# Stage 1: Build the application
-FROM maven:3.8.4-eclipse-temurin-21 AS build
-WORKDIR /customer-service
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package
+# Multi-stage build: assumes JAR is built locally
+# To build: export PATH=/usr/lib/jvm/msopenjdk-25-amd64/bin:$PATH && export JAVA_HOME=/usr/lib/jvm/msopenjdk-25-amd64 && mvn clean package -DskipTests
 
-# Stage 2: Run the application
-FROM eclipse-temurin:21-jdk-alpine
+# Runtime stage with Java 25
+FROM eclipse-temurin:25-jdk-alpine
 WORKDIR /customer-service
-COPY ../target/*.jar /customer-service/application.jar
+COPY target/customer-0.0.1-SNAPSHOT.jar application.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/customer-service/application.jar"]
+ENTRYPOINT ["java", "-jar", "application.jar"]

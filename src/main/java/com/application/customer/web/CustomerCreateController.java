@@ -1,7 +1,8 @@
-package com.application.customer;
+package com.application.customer.web;
 
 
-import com.application.customer.services.CustomerService;
+import com.application.customer.model.Customer;
+import com.application.customer.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

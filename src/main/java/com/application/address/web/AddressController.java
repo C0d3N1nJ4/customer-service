@@ -1,5 +1,7 @@
-package com.application.address;
+package com.application.address.web;
 
+import com.application.address.model.Address;
+import com.application.address.service.AddressService;
 import com.application.exceptions.AddressNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,9 +16,9 @@ import java.util.Optional;
 @RequestMapping("/address")
 public class AddressController {
 
-    private final AddressServiceImpl addressService;
+    private final AddressService addressService;
 
-    public AddressController(AddressServiceImpl addressService) {
+    public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 

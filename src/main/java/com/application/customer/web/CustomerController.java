@@ -1,7 +1,7 @@
-package com.application.customer;
+package com.application.customer.web;
 
-import com.application.customer.services.CustomerService;
-import com.application.customer.services.CustomerServiceImpl;
+import com.application.customer.model.Customer;
+import com.application.customer.service.CustomerService;
 import com.application.exceptions.CustomerNotFoundException;
 import com.application.exceptions.StatusNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;

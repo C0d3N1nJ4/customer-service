@@ -1,6 +1,6 @@
-package com.application.customer.services;
+package com.application.customer.service;
 
-import com.application.customer.Customer;
+import com.application.customer.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +18,8 @@ public interface CustomerService {
     List<Customer> getCustomerByStatus(String status);
 
     Customer createCustomer(Customer customer);
+
+    Customer updateCustomer(Customer customer);
 
     Optional<Customer> findCustomerByAddress_Id(String addressId);
 

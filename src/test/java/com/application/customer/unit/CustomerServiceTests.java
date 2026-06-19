@@ -1,8 +1,10 @@
-package com.application.customer;
+package com.application.customer.unit;
 
-import com.application.address.Address;
-import com.application.contact.Contact;
-import com.application.customer.services.CustomerServiceImpl;
+import com.application.address.model.Address;
+import com.application.contact.model.Contact;
+import com.application.customer.model.Customer;
+import com.application.customer.persistence.CustomerRepository;
+import com.application.customer.service.CustomerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

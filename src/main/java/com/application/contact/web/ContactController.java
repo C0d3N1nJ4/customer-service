@@ -1,5 +1,7 @@
-package com.application.contact;
+package com.application.contact.web;
 
+import com.application.contact.model.Contact;
+import com.application.contact.service.ContactService;
 import com.application.exceptions.ContactNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,9 +15,9 @@ import java.util.List;
 @RequestMapping("/contact")
 public class ContactController {
 
-    private final ContactServiceImpl contactService;
+    private final ContactService contactService;
 
-    public ContactController(ContactServiceImpl contactService) {
+    public ContactController(ContactService contactService) {
         this.contactService = contactService;
     }
 

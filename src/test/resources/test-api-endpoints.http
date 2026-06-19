@@ -1,7 +1,102 @@
-### API Tests
+### API Tests - Full Endpoint Coverage
 
-###Retrieve all customers
-GET http://localhost:8080/customers
+@baseUrl = http://localhost:8080
 
-###
-GET http://localhost:8080/contact
+### Retrieve all customers
+GET {{baseUrl}}/customers
+
+### Retrieve customer by id
+GET {{baseUrl}}/customers/1
+
+### Retrieve customers by status
+GET {{baseUrl}}/customers/filter/ACTIVE
+
+### Retrieve customer by address id
+GET {{baseUrl}}/customers/address/1
+
+### Retrieve all contacts
+GET {{baseUrl}}/contact
+
+### Retrieve contact by id
+GET {{baseUrl}}/contact/1
+
+### Create a contact
+POST {{baseUrl}}/contact
+Content-Type: application/json
+
+{
+	"id": "999",
+	"email": "new.contact@test.com",
+	"phone": "0123456789"
+}
+
+### Retrieve address by id
+GET {{baseUrl}}/address/1
+
+### Retrieve all addresses
+GET {{baseUrl}}/address/list
+
+### Retrieve addresses by city
+GET {{baseUrl}}/address/filter/city/CHICAGO
+
+### Create an address
+POST {{baseUrl}}/address
+Content-Type: application/json
+
+{
+	"id": "999",
+	"street": "NEW STREET",
+	"number": "99",
+	"suburb": "NEW SUBURB",
+	"city": "NEW CITY",
+	"postalCode": "9999"
+}
+
+### Create a customer
+POST {{baseUrl}}/create/customer
+Content-Type: application/json
+
+{
+	"id": "999",
+	"name": "NEWNAME",
+	"lastname": "NEWLASTNAME",
+	"status": "ACTIVE"
+}
+
+### Create customer with an existing address id
+POST {{baseUrl}}/create/customer/address/1
+Content-Type: application/json
+
+{
+	"id": "998",
+	"name": "WITHADDRESS",
+	"lastname": "CUSTOMER",
+	"status": "ACTIVE"
+}
+
+### Swagger UI
+GET {{baseUrl}}/swagger-ui.html
+
+### OpenAPI JSON
+GET {{baseUrl}}/api-docs
+
+### View page: list customers
+GET {{baseUrl}}/view/customers
+
+### View page: new customer form
+GET {{baseUrl}}/view/customers/new
+
+### View action: create customer from form
+POST {{baseUrl}}/view/customers/new
+Content-Type: application/x-www-form-urlencoded
+
+id=997&name=FORMNAME&lastname=FORMLASTNAME&status=ACTIVE
+
+### View page: edit customer form
+GET {{baseUrl}}/view/customers/view/customers/edit/1
+
+### View action: update customer from form
+POST {{baseUrl}}/view/customers/customers/update
+Content-Type: application/x-www-form-urlencoded
+
+id=1&name=UPDATEDNAME&lastname=UPDATEDLASTNAME&status=ACTIVE

@@ -1,9 +1,7 @@
-package com.application.contact;
+package com.application.contact.model;
 
-import com.application.customer.Customer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 

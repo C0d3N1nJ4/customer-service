@@ -1,4 +1,6 @@
-package com.application.customer;
+package com.application.customer.persistence;
+
+import com.application.customer.model.Customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;

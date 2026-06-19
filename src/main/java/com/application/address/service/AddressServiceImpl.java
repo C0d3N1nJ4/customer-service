@@ -1,4 +1,7 @@
-package com.application.address;
+package com.application.address.service;
+
+import com.application.address.model.Address;
+import com.application.address.persistence.AddressRepository;
 
 import org.springframework.stereotype.Service;
 

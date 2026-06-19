@@ -1,4 +1,4 @@
-package com.application.customer;
+package com.application.customer.integration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,6 @@
-package com.application.address;
+package com.application.address.service;
+
+import com.application.address.model.Address;
 
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ public interface AddressService {
     List<Address> findAll();
 
     Optional<Address> findById(String id);
+
+    Iterable<Address> findByCity(String city);
 
     Address create(Address address);
 

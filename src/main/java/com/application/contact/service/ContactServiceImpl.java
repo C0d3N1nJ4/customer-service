@@ -1,4 +1,7 @@
-package com.application.contact;
+package com.application.contact.service;
+
+import com.application.contact.model.Contact;
+import com.application.contact.persistence.ContactRepository;
 
 import org.springframework.stereotype.Service;
 

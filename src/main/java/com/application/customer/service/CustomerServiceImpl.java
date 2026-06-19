@@ -1,11 +1,12 @@
-package com.application.customer.services;
+package com.application.customer.service;
 
-import com.application.address.Address;
-import com.application.address.AddressService;
-import com.application.customer.Customer;
-import com.application.customer.CustomerRepository;
+import com.application.address.model.Address;
+import com.application.address.service.AddressService;
+import com.application.customer.model.Customer;
+import com.application.customer.persistence.CustomerRepository;
 import com.application.exceptions.AddressNotFoundException;
 import com.application.exceptions.CustomerExistsException;
+import com.application.exceptions.CustomerNotFoundException;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +55,16 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer createCustomer(Customer customer) {
         checkIfCustomerExists(customer.getId());
         log.info("Creating customer: " + customer);
+        return customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        if (!customerRepository.existsById(customer.getId())) {
+            throw new CustomerNotFoundException(customer.getId());
+        }
+
+        log.info("Updating customer: " + customer);
         return customerRepository.save(customer);
     }
 

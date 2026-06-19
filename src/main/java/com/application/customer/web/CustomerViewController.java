@@ -1,6 +1,7 @@
-package com.application.customer.services;
+package com.application.customer.web;
 
-import com.application.customer.Customer;
+import com.application.customer.model.Customer;
+import com.application.customer.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +11,11 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/view/customers")
-public class CustomerViewService {
+public class CustomerViewController {
 
-    private final CustomerServiceImpl customerService;
+    private final CustomerService customerService;
 
-    public CustomerViewService(CustomerServiceImpl customerService) {
+    public CustomerViewController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
@@ -39,26 +40,26 @@ public class CustomerViewService {
             return "createCustomer";
         } else {
             customerService.createCustomer(customer);
-            return "redirect:/view/customers";
+            return "redirect:.";
         }
     }
 
-    @GetMapping("/view/customers/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editCustomer(@PathVariable("id") String id, Model model) {
         Customer customer = customerService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid customer Id:" + id));
         model.addAttribute("customer", customer);
 
-        return "edit";
+        return "editCustomer";
     }
 
-    @PostMapping("/customers/update")
+    @PostMapping("/update")
     public String updateCustomer(@Valid Customer customer, BindingResult result, Model model){
         if (result.hasErrors()) {
-            return "edit";
+            return "editCustomer";
         }
 
-        customerService.createCustomer(customer);
-        return "redirect:/view/customers";
+        customerService.updateCustomer(customer);
+        return "redirect:.";
     }
 }

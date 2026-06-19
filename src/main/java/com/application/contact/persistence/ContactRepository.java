@@ -1,4 +1,6 @@
-package com.application.contact;
+package com.application.contact.persistence;
+
+import com.application.contact.model.Contact;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

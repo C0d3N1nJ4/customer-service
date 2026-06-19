@@ -1,4 +1,4 @@
-package com.application.customer;
+package com.application.customer.smoke;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
